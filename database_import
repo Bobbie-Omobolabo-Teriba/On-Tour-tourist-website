@@ -1,0 +1,99 @@
+
+DROP DATABASE IF EXISTS bobbieteriba_map;
+CREATE DATABASE bobbieteriba_map;
+USE bobbieteriba_map-- MySQL command
+;
+CREATE TABLE destination(
+  accountID 	   INT(11)        NOT NULL   AUTO_INCREMENT,
+  emailAddress     VARCHAR(30)        NOT NULL,
+  password         VARCHAR(20)    NOT NULL,
+  name      	   VARCHAR(20)   NOT NULL,
+  date 		   DATE  NOT NULL,
+  telephone 	   VARCHAR(20)   NOT NULL,
+  start   	   VARCHAR(20)  NOT NULL,
+  end 		   VARCHAR(20)  NOT NULL,
+  PRIMARY KEY (accountID)
+);
+
+CREATE TABLE hotels(
+  hotelID	   INT(11)        NOT NULL   AUTO_INCREMENT,
+  hotelName 	   VARCHAR(50)    NOT NULL,
+  price            INT(11)        NOT NULL,
+  address          VARCHAR(30)    NOT NULL,
+  PRIMARY KEY (hotelID)
+);
+
+CREATE TABLE funfair(
+  funfairID 	   INT(11)        NOT NULL   AUTO_INCREMENT,
+  funfairName	   VARCHAR(50)    NOT NULL,
+  price            INT(11)        NOT NULL,
+  openTime         Double         NOT NULL,
+  closeTime        Double         NOT NULL,
+  PRIMARY KEY (funfairID) 
+);
+
+CREATE TABLE restaurant(
+  restaurantID	   INT(11)        NOT NULL   AUTO_INCREMENT,
+  restaurantName   VARCHAR(50)    NOT NULL,
+  type		   VARCHAR(50)    NOT NULL,
+  cost		   CHAR(50)       NOT NULL,
+  address          VARCHAR(30)    NOT NULL,
+  PRIMARY KEY (restaurantID)
+);
+
+CREATE TABLE museum(
+  museumID	   INT(11)        NOT NULL   AUTO_INCREMENT,
+  museumName	   VARCHAR(50)    NOT NULL,
+  openTime         Double         NOT NULL,
+  closeTime        Double         NOT NULL,
+  address          VARCHAR(30)    NOT NULL,
+  PRIMARY KEY (museumID)	   
+);
+
+CREATE TABLE airport(
+  airportID	   INT(11)        NOT NULL   AUTO_INCREMENT,
+  airportName	   VARCHAR(50)    NOT NULL,
+  address          VARCHAR(30)    NOT NULL,
+  PRIMARY KEY (airportID)	   
+);
+
+
+INSERT INTO hotels (hotelName, price, address) VALUES
+('Sligo Park Hotel, Leisure Club',90,'Co, Sligo'),
+('Radisson Blu, Hotel and Spa',120,'Co, Galway'),
+('George Hotel',78,'Co, Limerick'),
+('Kilronan Castle',87,'Co, Athlone');
+
+INSERT INTO funfair (funfairName, price, openTime, closeTime) VALUES
+('Tayto Park',35,12.3,20.3),
+('Clara Lara Funpark',25,10,23),
+('Funtasia Drogheda',26,9,18),
+('Westport House',45,11,19);
+
+INSERT INTO restaurant(restaurantName,cost, type, address) VALUES
+('Fishy Fishy','Seafood Restaurant','\u20AC\u20AC','Kinsale, Cork'),
+('Campagne','Fine Dining Restaurant','\u20AC\u20AC\u20AC\u20AC','Gas House Lane, Kilkenny'),
+('Cafe Hans','Cafe','\u20AC\u20AC','Rockside, Tipperary'),
+('Aqua','Seafood Restaurant','\u20AC\u20AC\u20AC','Howth, Dublin');
+
+INSERT INTO museum(museumName,openTime, closeTime, address) VALUES
+('Irish Agricultural and Famine',10,22,'Wexford'),
+('Irish National Famine',8,18,'Roscommon'),
+('Irish Museum of Modern Art',12,24,'Dublin 8');
+
+INSERT INTO airport(airportName, address) VALUES
+('Dublin Airport','Dublin'),
+('Donegal Airport','Donegal'),
+('Sligo Airport','Sligo'),
+('Shannon Airport','Clare'),
+('Cork Airport','Cork');
+
+GRANT SELECT, INSERT, DELETE, UPDATE
+ON bobbieteriba_map.*
+TO D00197875@localhost
+IDENTIFIED BY 'ujZgTIh1';
+
+GRANT SELECT
+ON destination
+TO D00197875@localhost
+IDENTIFIED BY 'ujZgTIh1';
